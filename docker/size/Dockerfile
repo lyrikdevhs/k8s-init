@@ -1,10 +1,8 @@
-FROM debian
+FROM alpine
 
 COPY . /opt/
 
-RUN apt-get update && apt-get install -y \
-    nginx \
- && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache nginx && mkdir -p /run/nginx
 
 COPY custom.conf /etc/nginx/conf.d/
 
@@ -12,4 +10,4 @@ EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
 
-# size 157 MB
+# size 9.25 MB

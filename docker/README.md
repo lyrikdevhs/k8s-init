@@ -20,9 +20,9 @@ ___
 - docker rmi/rm ID_IMAGE_OR_CONTAINER
   - rm $(docker ps -a -q) - remove all containers
   - rmi $(docker images -q) - remove all images
+- docker exec -it redis /bin/bash
 
 ### Dockerfile:
 - COPY vs ADD - the same, but the ADD can require resource from some URL, execute archive
 - EXPOSE 80 - open the port
 - ENV FOO bar - init some ENVs
-- 

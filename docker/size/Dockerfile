@@ -1,6 +1,10 @@
-FROM alpine
+FROM alpine:3.18
 
-RUN apk add --no-cache nginx && mkdir -p /run/nginx
+ENV NGINX_VERSION 1.16
+ENV ALPINE_REPOSYTORY_URL 123
+
+RUN apk add --no-cache --repository https://dl-cdn.alpinelinux.org/alpine/v3.18/main/ nginx=${NGINX_VERSION} \
+ && mkdir -p /run/nginx
 
 EXPOSE 80
 

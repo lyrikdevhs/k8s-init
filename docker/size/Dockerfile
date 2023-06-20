@@ -1,10 +1,14 @@
-FROM nginx
+FROM debian
 
-COPY index.html /urs/share/nginx/html
-ADD custom.conf /etc/nginx/conf.d/
+COPY . /opt/
+
+RUN apt-get update
+RUN apt-get install -y nginx
+
+COPY custom.conf /etc/nginx/conf.d/
 
 EXPOSE 80
 
-ENV FOO bar
-
 CMD ["nginx", "-g", "daemon off;"]
+
+# size 176MB
